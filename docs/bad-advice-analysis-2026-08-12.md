@@ -10,7 +10,11 @@ mappers (degraded paths, ranking inputs, client presentation, empty-reason ladde
 scenario stress-tests (regional mega-smoke, model error at the destination, peak-load
 degradation, staleness), then an independent adversarial verifier per claimed wrong-advice
 path, instructed to refute against current code. Several claims were partially refuted — the
-refutations are reported alongside the confirmations. Every claim below carries file:line
+refutations are reported alongside the confirmations. The same discipline continued after
+publication: three same-day conclusions (a which-guard-blocks-it claim, a branch-conflict
+count, a pushed-state claim) were reversed — every one caught by someone *re-deriving the
+number* rather than reading the claim. Trust in this report should attach to its arithmetic,
+which is reproducible, not to any author's assertion. Every claim below carries file:line
 evidence in the workflow transcript
 (`subagents/workflows/wf_66789eab-322/journal.jsonl` in the session directory).
 
