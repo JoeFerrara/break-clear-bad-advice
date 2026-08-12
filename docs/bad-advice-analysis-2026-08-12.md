@@ -173,8 +173,18 @@ but nothing frames the *set* as harm reduction rather than escape.
 This is defensible — in regional mega-smoke, "less bad" can genuinely be the right advice,
 and the alternative (an absolute bar) would return empties while a materially better
 destination exists. Recommendation: **keep the relative gate, make the framing structural** —
-an `advisory: "still-unhealthy"` field whenever stay-mean > 100, a minimum-delta AND on the
-category branch (kills the 1-point pass), a score floor, and "worsens to" as the verb.
+an `advisory: "still-unhealthy"` field, a minimum-delta AND on the category branch (kills
+the 1-point pass), a score floor, and "worsens to" as the verb.
+
+**Spec correction (implementation, 2026-08-12): the advisory must key on
+`max(observed current, stayWorst)` > 100 — NOT on stay-mean.** An advisory that reads the
+48h mean inherits #58's blindness: the live Priest Lake card (stay-mean 65, observed 138,
+nine hours at 147–152) would have shipped with *no* advisory, and the label would have
+looked correct while missing exactly the cards that most need it. Keyed on the observation,
+the advisory becomes a real backstop for the class #58 lets through. (Also verified in code:
+`passesImprovementGate` returns early on the delta branch, so a min-delta scoped to the
+category branch is provably unreachable for delta-passing cards — it fixes the 1-point
+band-edge pass and nothing else.)
 
 ## 4. The medium tail (real, bounded, mostly labeled-but-implicit)
 
