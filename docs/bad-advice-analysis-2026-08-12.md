@@ -48,6 +48,9 @@ conditioned on the §5 gate items shipping before public release.**
   a widget staleness ladder that refuses to show aged numbers.
 - **A real monitor cross-check exists at destinations** and feeds the ranking (hour-0 pin +
   multiplicative correction), not just the display.
+- **Live production evidence** (implementation session, 2026-08-12): the honest-empty path
+  verified against production — Yakima at a 3h budget returns an empty with the "nearest that
+  qualifies" sentence naming Pullman beyond the budget, rather than offering something worse.
 - **Refutations worth recording** (adversarial verify working as intended): escape cards
   inside a degraded body are *full-confidence destination data* (the origin budget doesn't
   touch the catalog), so rendering them normally is correct; the iOS 4-hour browser-cache
@@ -174,6 +177,14 @@ category branch (kills the 1-point pass), a score floor, and "worsens to" as the
   worsened*) keeps rendering its old numbers on the pushed detail view, unlabeled.
 - Destination surfaces label observations "now" with no timestamp; the detail screen's
   time-only observation stamp lacks the day qualification the Today header has.
+- **#79 (filed by implementation 2026-08-12, priority high)**: the escapes endpoint's cache key is
+  the snapped 0.05° cell but distances (and `siteReadingFor`) compute from the *raw* query
+  coordinate — two coordinates in one cell share a cache entry, so **the same cached body can
+  publish a different monitor's AQI depending on which neighbour warmed the cell**, and
+  `budgetMinutesNeeded` can name a budget that returns nothing. Reproduced in production.
+  **No live user impact today** (iOS snaps client-side; the web companion is not deployed) —
+  it goes live with the web app, so it gates the *web* launch, and it likely interacts
+  with #75.
 
 
 ---
