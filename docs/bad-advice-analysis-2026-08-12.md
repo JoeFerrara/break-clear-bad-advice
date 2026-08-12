@@ -27,6 +27,28 @@ surface is concentrated: a launch gate of ~9 bounded changes (§5) converts the 
 an honest empty or an honestly-labeled partial. **Recommendation: the free-launch go stands,
 conditioned on the §5 gate items shipping before public release.**
 
+> **Update, later on 2026-08-12 — live production confirmation.** Implementation scanned
+> eight smoky NW origins on worker `417bed60` and found a **live drive-into-smoke card**,
+> arriving through **#58, not #80**: origin Sandpoint observed **93 (Moderate)**; the sixth
+> card offered Priest Lake, 49 min away — **observed 138 (USG)** from its resolved monitor,
+> bias-corrected forecast 147–152 for the next nine hours, summary "Unhealthy for Sensitive
+> Groups on arrival · dips to Unhealthy by Fri". It passed because the gate compares the
+> origin's instantaneous reading against a 48-hour destination mean: 65 ≤ 93−25 = 68 —
+> **the bias correction worked; the gate averaged the plume away.** Sequencing consequence,
+> with each proposed guard recomputed against this card: `#58`'s same-window fix blocks it
+> (origin and destination share a monitor 30 km apart, so their window means converge), and
+> **the observed-current gate — item 1 of #80's checklist — blocks it outright (138 > 68)**;
+> #82's score floor does *not* (score 0.636 > 0) and the category-branch min-delta does
+> *not* (the card passed the delta branch). #80's decay artifact remains code-verified but
+> was not observed in the eight-origin scan, so within #80 the observed-current gate leads
+> and the `applyBiasCorrection` rework can follow. #82's "dips to" verb bug is live on this
+> exact card (pulled forward — §5 item 11). #75 is also live (Whitefish publishing PM10 44
+> "Good" against a PM2.5 stay-mean of 3; Anacortes publishing ozone 10). Note for #75/#79:
+> Priest Lake's "current" comes from a monitor 30.3 km away named "Sandpoint" that
+> disagrees with the origin's own Sandpoint-area reading (93 vs 138) because each resolves
+> nearest-site from a different coordinate. Full scan: implementation's comment on #80; the
+> card numbers are on #58.
+
 ---
 
 ## 1. What holds up (verified sound)
@@ -75,6 +97,9 @@ about the plume ending.** If the plume persists, the true stay-mean ~158 would h
 rejected. The card ships honestly labeled (current 158, arrival USG, `cleanThroughCheckout:
 false`) — but the *decision* to ship it was fabricated. The half-life was designed for the
 CAMS-overestimates direction (#24); the underestimate direction is unhandled.
+*Status: code-verified; not observed in the 2026-08-12 eight-origin production scan. The
+observed-current gate (§5 item 1) blocks this card shape too, so it ships first; the decay
+rework follows.*
 
 ### 2.2 Stale anchor vacuously confirms the clean model — CONFIRMED high, previously untracked
 
@@ -100,7 +125,9 @@ All three open, priority-high, and verified still present:
   destination side is a **PM2.5-only 48h forecast mean**. Destination ozone is fetched but
   never scored. On an ozone-driven origin day the app can confidently recommend a drive into
   equally bad ozone, judged solely on PM2.5. (The cross-pollutant asymmetry is *in addition
-  to* the temporal asymmetry the issue text centers.)
+  to* the temporal asymmetry the issue text centers.) **Confirmed live in production the
+  same day** — the Sandpoint→Priest Lake card in the Verdict update is a pure #58 instance:
+  the temporal asymmetry alone, no ozone involved.
 - **#75**: nearest-monitor selection has no pollutant filter — a non-PM2.5 monitor's AQI is
   published as the destination's air ("Whitefish reads Moderate during a 207"), and it also
   silently nulls the bias anchor, disabling correction for that destination. **A fix already
