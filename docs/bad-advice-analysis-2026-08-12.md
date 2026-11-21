@@ -16,7 +16,7 @@ count, a pushed-state claim) were reversed — every one caught by someone *re-d
 number* rather than reading the claim. Trust in this report should attach to its arithmetic,
 which is reproducible, not to any author's assertion.
 
-**Provenance.** Every claim below carries `file:line` evidence against `main` at
+**Provenance.** Claims below cite code by file, function or commit against `main` at
 `25e4e4d`/`4d5daf8` (2026-08-12), and the arithmetic is reproducible from that commit today —
 the §2.1 figures were re-derived from source in November 2026 and matched. The originating
 workflow transcript no longer exists; nothing here depends on it. Where a claim was later
