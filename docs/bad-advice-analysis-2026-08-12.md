@@ -14,9 +14,13 @@ refutations are reported alongside the confirmations. The same discipline contin
 publication: three same-day conclusions (a which-guard-blocks-it claim, a branch-conflict
 count, a pushed-state claim) were reversed — every one caught by someone *re-deriving the
 number* rather than reading the claim. Trust in this report should attach to its arithmetic,
-which is reproducible, not to any author's assertion. Every claim below carries file:line
-evidence in the workflow transcript
-(`subagents/workflows/wf_66789eab-322/journal.jsonl` in the session directory).
+which is reproducible, not to any author's assertion.
+
+**Provenance.** Every claim below carries `file:line` evidence against `main` at
+`25e4e4d`/`4d5daf8` (2026-08-12), and the arithmetic is reproducible from that commit today —
+the §2.1 figures were re-derived from source in November 2026 and matched. The originating
+workflow transcript no longer exists; nothing here depends on it. Where a claim was later
+corrected, the correction is in the text rather than replacing it.
 
 ---
 
